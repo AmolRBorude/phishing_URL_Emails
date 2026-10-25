@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg: 7 13 28; --panel: 13 22 43; --panel2: 19 31 58; --line: 34 48 82; --fg: 226 232 245; --muted: 140 154 184; }
+.light { --bg: 240 244 250; --panel: 255 255 255; --panel2: 244 247 252; --line: 219 226 238; --fg: 15 23 42; --muted: 90 104 130; }
+
+html { scroll-behavior: smooth; }
+body { @apply bg-bg text-fg font-sans antialiased; }
+:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
+::-webkit-scrollbar { height: 8px; width: 8px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--line)); border-radius: 8px; }
+
+@layer components {
+  .card { @apply bg-panel border border-line rounded-2xl shadow-lg shadow-black/10; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed; }
+  .btn-primary { @apply bg-gradient-to-r from-brand-500 to-blue-500 text-white shadow-lg shadow-brand-500/20 hover:from-brand-400 hover:to-blue-400; }
+  .btn-ghost { @apply border border-line text-fg hover:bg-panel2; }
+  .btn-danger { @apply bg-red-500 text-white hover:bg-red-600; }
+  .input { @apply w-full rounded-xl bg-bg border border-line px-3.5 py-2.5 text-sm text-fg placeholder:text-muted/70 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30; }
+  .input-error { @apply border-red-500 focus:border-red-500 focus:ring-red-500/30; }
+  .label { @apply block text-sm font-medium mb-1.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
